@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
 
-const API_URL = 'http://localhost:4000'
+const API_URL = import.meta.env.VITE_API_URL;
 const Profile = ({setCurrentUser,onLogout}) => {
     const [profile, setProfile]=useState({name: "", email:""})
     const [passwords, setPasswords] = useState({current:"", new:"",confirm:"" })
