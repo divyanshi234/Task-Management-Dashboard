@@ -11,7 +11,7 @@ function Layout({onLogout, user}) {
   const [tasks, setTasks] = useState([]);
   const [loading, setloading] =useState(true);
   const [error, setError] = useState(null);
-
+ const API_URL = import.meta.env.VITE_API_URL;
 
   const fetchTasks = useCallback(async () =>{
     setloading(true);
@@ -21,9 +21,13 @@ function Layout({onLogout, user}) {
       const token =localStorage.getItem('token');
       if(!token) throw new Error("No auth token found");
 
-        const {data} =await axios.get("http://localhost:4000/api/tasks/gp",{
-          headers: { Authorization:`Bearer ${token}`}
-        })
+       const { data } = await axios.get(
+                     `${API_URL}/api/tasks/gp`,
+                 {
+            headers: {
+                 Authorization: `Bearer ${token}`
+                }
+              } );
 
         const arr = Array.isArray(data) ? data: 
         Array.isArray(data?.tasks) ? data.tasks:
