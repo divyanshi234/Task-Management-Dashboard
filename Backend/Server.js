@@ -17,7 +17,7 @@ const port = process.env.PORT || 4000;
 connectDB();
 // Middleware
 app.use(cors({
-  origin: ["http://localhost:5173", "https://your-frontend.vercel.app"],
+  origin: true,
   credentials: true
 }));
 
